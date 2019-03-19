@@ -31,6 +31,8 @@
       <li><a href="#musings" class="active">Musings</a></li>
       <li> / </li>
       <li><a href="#floroids">Floroids</a></li>
+       <li> / </li>
+      <li><a href="#videos">Videos</a></li>
     </ul>
 
     <section class="gallery" id="musings">
@@ -41,6 +43,16 @@
       <p>The following images have been created with my web app <a href="//floroids.joseblancoperales.com" target="_blank">Floroids</a>. For more information, visit the <a href="./projects.html">Projects</a> section.</p>
     </section>
 
+    <section class="gallery gallery-video hide fade-out" id="videos">
+      <p>The following animations were made with javascript on the browser.</p>
+      <div style="padding:56.25% 0 0 0;position:relative;">
+        <iframe src="https://player.vimeo.com/video/324805562" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>
+      <div style="padding:56.25% 0 0 0;position:relative;">
+        <iframe src="https://player.vimeo.com/video/324840513" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>
+      <script src="https://player.vimeo.com/api/player.js"></script>
+    </section>
   </main>
 
   <footer>
@@ -117,8 +129,9 @@ function changeGallery (event) {
     else a.classList.add('active');
   });
 
-  // if gallery has already images, do not recreate them
-  if (!document.querySelector(event.target.hash + ' img')) {
+  // if gallery has already images or videos, do not recreate them
+  if (activeGalleryId !== 'videos' &&
+      !document.querySelector(event.target.hash + ' img')) {
     createThumbnails(event.target.hash);
   }
 
