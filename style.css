@@ -54,7 +54,7 @@ header svg:hover #logo-body {
 /* navigation and menus */
 nav {
     width: 408px;
-    margin: auto;
+    margin: 10px auto;
 }
 
 .menu {
@@ -91,17 +91,30 @@ main {
 }
 
 /* home */
-#img-presentation {
-    margin: 0;
+canvas {
+    width: 100%;
+    height: 100%;
 }
 
-#img-presentation img {
-    display: block;
-    margin: auto;
-}
-
-#img-presentation figcaption {
+.fig-caption {
+    width: 100%;
+    margin: 0 auto;
     text-align: center;
+}
+
+.fig-caption button {
+    background-color: #fff;
+    color: #777;
+    font-family: helvetica, sans-serif;
+    border: none;
+    box-shadow: 2px 2px 3px 2px #ccc;
+    padding: 8px;
+    margin-left: 1em;
+}
+
+.fig-caption button:hover {
+    background-color: #800000;
+    color: #fff;
 }
 
 /* gallery */
@@ -112,6 +125,21 @@ main {
     transition: all 300ms ease-in-out;
 }
 
+#gallery-menu a {
+    color: #800000;
+    text-decoration: none;
+}
+
+#gallery-menu a:hover {
+    color: #6682af;
+    text-decoration: underline;
+}
+
+#gallery-menu a > p {
+    text-align: center;
+    margin: 0;
+}
+
 .gallery-video {
     flex-direction: column;
     max-width: 600px;
@@ -120,36 +148,47 @@ main {
 
 .gallery-video div {
     margin-bottom: 2em;
+    padding: 56.25% 0 0 0;
+    position: relative;
 }
 
-#gallery-menu {
-    justify-content: center;
-    margin: 0 auto;
-}
-
-#gallery-menu li {
-    text-align: left;
-    width: auto;
-    padding-right: 10px;
+.gallery-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
 }
 
 .gallery h1 {
     color: #800000;
-    margin-bottom: 0;
-    font-size: 130%;
+    margin: 0 auto;
+    font-size: 160%;
     width: 100%;
     text-align: center;
 }
 
+.back-link {
+    width: 100%;
+    text-align: center;
+    font-size: 90%;
+    margin-bottom: 0;
+}
+
 .thumbnail {
     width: 250px;
-    border: 1px solid #ccc;
+    height: 130px;
     margin-top: 12px;
     object-fit: cover;
+    box-shadow: 2px 2px 3px 2px #ccc;
 }
 
 .thumbnail:hover {
-    border-color: #800000;
+    box-shadow: 2px 2px 3px 2px #800000;
+}
+
+#gallery-menu .thumbnail:hover {
+    box-shadow: 2px 2px 3px 2px #6682af;
 }
 
 .overlay, .big-image {
@@ -168,7 +207,7 @@ main {
 .big-image {
     right: 0;
     bottom: 0;
-    max-width: 800px;
+    max-width: 95%;
     height: auto;
     margin: auto;
     z-index: 11;
@@ -179,13 +218,11 @@ main {
     margin: 1em auto;
     margin-top: 3.5em;
     padding: .5em;
-    border-radius: 15px;
-    box-shadow: 2px 2px 6px 1px #ddd;
+    box-shadow: 2px 2px 3px 2px #ccc;
 }
 
 .link:hover {
-    background-color: #eee;
-    box-shadow: none;
+    box-shadow: 2px 2px 3px 2px #800000;
 }
 
 .link svg {
@@ -195,12 +232,16 @@ main {
 
 /* about */
 #profile-img {
-    width: 600px;
+    width: 350px; /*600px;*/
     margin: auto;
     display: block;
 }
 
 /* footer */
+footer {
+    margin-top: auto;
+}
+
 footer hr {
     max-width: 400px;
     border-top: 1px dotted #8c8b8b;
