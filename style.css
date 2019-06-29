@@ -270,7 +270,7 @@ footer p {
 
     nav { width: 90%; }
 
-    ul, p, .reading-width, .link svg, hr, #profile-img, .gallery-video  { width: 90%; }
+    li, p, .reading-width, .link svg, hr, #profile-img, .gallery-video  { width: 90%; }
 
     .link { padding: 0; }
 }
