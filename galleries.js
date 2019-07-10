@@ -71,6 +71,9 @@ function createVideo (galleryId) {
     const galleryKey = galleryId.slice(1);
     const activeGallery = document.querySelector(galleryId);
 
+    // return if section has already videos
+    if (activeGallery.querySelector('iframe')) return;
+
     imgData[galleryKey].forEach(file => {
         const div = document.createElement('div');
         div.classList.add('vimeo-video');
@@ -92,6 +95,9 @@ function createThumbnails (galleryId) {
 
     const galleryKey = galleryId.slice(1);
     const activeGallery = document.querySelector(galleryId);
+
+    // return if section has already images
+    if (activeGallery.querySelector('img')) return;
 
     imgData[galleryKey].forEach(file => {
         const [ filename, ext ] = file.split('.');
