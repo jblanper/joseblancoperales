@@ -146,8 +146,12 @@ function removeBigImage (event) {
 }
 
 function changeGallery (event) {
-    const hash = window.location.hash;
-    if (!hash) return;
+    let hash = window.location.hash;
+
+    // if back button is pushed and there is no hash
+    if (!hash) hash = '#gallery-menu';
+    // remove big image (when back button is pushed)
+    if (document.querySelector('.overlay')) removeBigImage();
 
     const activeGalleryId = hash.slice(1);
 
