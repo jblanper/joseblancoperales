@@ -1,6 +1,6 @@
 /* general */
 body {
-    max-width: 800px;
+    /* max-width: 800px; */
     margin: 0 auto;
     line-height: 1.4;
     font-size: 18px;
@@ -42,6 +42,14 @@ a:hover { color: #800000; }
 .hide { display: none !important; }
 
 /* header */
+header {
+    position: sticky;
+    top: 0;
+    margin-top: 20px;
+    padding-bottom: 15px;
+    background: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0));
+}
+
 header svg {
     display: block;
     margin: auto;
@@ -51,10 +59,23 @@ header svg:hover #logo-body {
     fill: #6da0bd;
 }
 
+#logo-link svg{
+    transition: transform 350ms ease-out;
+}
+
+.scrolled svg{
+    transform: scale(.5) translateY(-30px);
+}
+
 /* navigation and menus */
 nav {
     width: 408px;
     margin: 10px auto;
+    transition: transform 350ms ease-out;
+}
+
+.scrolled nav {
+    transform: translateY(-55px);
 }
 
 .menu {
@@ -119,10 +140,20 @@ canvas {
 
 /* gallery */
 .gallery {
+    transition: all 300ms ease-in-out;
+}
+
+.gallery-items {
+    width: 92%;
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    transition: all 300ms ease-in-out;
+}
+
+.gallery-items > div,
+.gallery-items > img {
+    margin: 10px;
 }
 
 #gallery-menu a {
@@ -231,10 +262,15 @@ canvas {
 }
 
 /* about */
+#about {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 #profile-img {
-    width: 350px; /*600px;*/
-    margin: auto;
-    display: block;
+    max-height: 500px;
 }
 
 /* footer */
@@ -258,7 +294,7 @@ footer p {
 /* media queries */
 @media (max-width: 800px) {
     body {
-        width: 95%;
+        width: 92%;
         font-size: 16px;
     }
 

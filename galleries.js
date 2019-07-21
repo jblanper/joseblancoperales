@@ -94,7 +94,7 @@ function createThumbnails (galleryId) {
     if (galleryId === '#gallery-menu') return;
 
     const galleryKey = galleryId.slice(1);
-    const activeGallery = document.querySelector(galleryId);
+    const activeGallery = document.querySelector(galleryId + ' .gallery-items');
 
     // return if section has already images
     if (activeGallery.querySelector('img')) return;
