@@ -270,7 +270,9 @@ canvas {
 }
 
 #profile-img {
+    /* 1080 w x 1212 h */
     max-height: 500px;
+    max-width: 445.544px;
 }
 
 /* footer */
