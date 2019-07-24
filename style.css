@@ -151,9 +151,10 @@ canvas {
     justify-content: space-around;
 }
 
-.gallery-items > div,
-.gallery-items > img {
-    margin: 10px;
+.gallery-items {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, 250px);
 }
 
 #gallery-menu a {
