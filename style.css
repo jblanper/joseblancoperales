@@ -43,11 +43,12 @@ a:hover { color: #800000; }
 
 /* header */
 header {
-    position: sticky;
+    position: fixed;
     top: 0;
-    margin-top: 20px;
-    padding-bottom: 15px;
-    background: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0));
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: white;
 }
 
 header svg {
@@ -60,7 +61,11 @@ header svg:hover #logo-body {
 }
 
 #logo-link svg{
-    transition: transform 350ms ease-out;
+    transition: transform 200ms ease-out;
+}
+
+.scrolled {
+    height: 90px;
 }
 
 .scrolled svg{
@@ -71,7 +76,7 @@ header svg:hover #logo-body {
 nav {
     width: 408px;
     margin: 10px auto;
-    transition: transform 350ms ease-out;
+    transition: transform 200ms ease-out;
 }
 
 .scrolled nav {
@@ -104,7 +109,7 @@ nav {
 /* main */
 main {
     flex-grow: 1;
-    margin: 1em 0;
+    margin: 180px 0 1em 0;
 }
 
 .intro {
@@ -154,7 +159,7 @@ canvas {
 .gallery-items {
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(auto-fit, 250px);
+    grid-template-columns: repeat(auto-fill, 250px);
 }
 
 #gallery-menu a {
