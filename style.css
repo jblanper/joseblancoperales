@@ -65,7 +65,9 @@ header svg:hover #logo-body {
 }
 
 .scrolled {
-    height: 90px;
+    height: 100px;
+    box-shadow: 1px 1px 15px #ccc;
+    transition: box-shadow 300ms ease-out 100ms;
 }
 
 .scrolled svg{
@@ -109,7 +111,7 @@ nav {
 /* main */
 main {
     flex-grow: 1;
-    margin: 180px 0 1em 0;
+    margin: 160px 0 0 0;
 }
 
 .intro {
@@ -199,7 +201,7 @@ canvas {
 
 .gallery h1 {
     color: #800000;
-    margin: 0 auto;
+    margin: 1em auto 0 auto;
     font-size: 160%;
     width: 100%;
     text-align: center;
@@ -279,7 +281,7 @@ canvas {
     /* 1080 w x 1212 h */
     max-width: 445px;
     height: auto;
-    margin: auto;
+    margin: 1em auto;
     display: block;
 }
 
