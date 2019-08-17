@@ -155,14 +155,14 @@ canvas {
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
 }
 
-.gallery-items {
+/* .gallery-items {
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(auto-fill, 250px);
-}
+} */
 
 #gallery-menu a {
     color: #800000;
@@ -217,7 +217,7 @@ canvas {
 .thumbnail {
     width: 250px;
     height: 130px;
-    margin-top: 12px;
+    margin: 12px;
     object-fit: cover;
     box-shadow: 2px 2px 3px 2px #ccc;
 }
