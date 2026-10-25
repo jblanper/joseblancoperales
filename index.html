@@ -1,43 +1,158 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>José Blanco Perales</title>
-  <style>
-    body {
-      padding: 15px;
-      font-family: 'Courier New', Courier, monospace;
-      text-align: center;
-      max-width: 350px;
-      margin: 25px auto 0 auto;
-    }
-
-    p {
-      margin: 7px auto;
-    }
-
-    h1 {
-      font-size: 3rem;
-      font-weight: bold;
-      margin: 0 auto 30px auto;
-      color: #333;
-    }
-
-    strong {
-      font-weight: bold;
-      color: #555;
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jose Blanco Perales</title>
+  <meta name="description" content="Portfolio of Jose Blanco Perales, illustrator">
+  <link rel="preload" href="fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="vendor/glightbox.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png"> 
 </head>
-
 <body>
-  <h1>Hi!</h1>
-  <p>Thanks for passing by.</p>
-  <p>~~~</p>
-  <p>You can say hello at:</p>
-  <p><strong>jblanper[at]gmail[dot]com</strong></p>
-</body>
 
+  <header class="site-header">
+    <a class="logo" href="index.html">
+      <img src="images/portfolio_square_logo.svg" alt="Jose Blanco Perales" width="110" height="110">
+    </a>
+    <nav aria-label="Main">
+      <a href="index.html" aria-current="page">Illustrations</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Filters. data-filter must match a value used in data-tags below ("all" shows everything). -->
+    <div class="filters" role="group" aria-label="Filter illustrations">
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" data-filter="book-illustration" aria-pressed="false">Book illustration</button>
+      <button type="button" data-filter="portraits" aria-pressed="false">Portraits</button>
+    </div>
+
+    <!--
+      HOW TO ADD A PIECE
+      Copy one block below, paste it where you want it in the mosaic, and change:
+        - data-tags       the tag(s) of the piece, separated by spaces
+        - href            the full-size image (made by tools/build-images.sh)
+        - data-caption    the short caption shown in the lightbox
+        - src, alt        the thumbnail and its description
+        - width, height   the thumbnail size in pixels (the script prints it)
+        - .description    optional longer text (one or two paragraphs, plain HTML). In the lightbox it
+                          appears beside the image, and over the bottom of the image on phones.
+                          Delete the whole div if the piece does not need one.
+
+      A book illustration has a second link (class="spread") with the book spread. It has no
+      image inside: it is hidden in the mosaic and shown as the next slide in the lightbox.
+      Pieces with a spread get a small "two pages" icon in the mosaic and a hover tooltip
+      automatically.
+
+      SHAREABLE LINKS
+      Every slide has a link made from its image file name: index.html#portrait-03 opens that
+      piece, and index.html#book-03-spread opens its book spread. Nothing to configure.
+    -->
+    <div class="mosaic" id="mosaic">
+
+      <div class="item" data-tags="book-illustration">
+        <a href="images/full/soseki_libelula_23.webp" data-caption="El Sueño de la Libélula by Soseki, haiku 23">
+          <img src="images/thumbs/soseki_libelula_23.webp" alt="El Sueño de la Libélula by Soseki, haiku 23" width="600" height="900" loading="lazy">
+        </a>
+      </div>
+
+      <div class="item" data-tags="book-illustration">
+        <a href="images/full/soseki_libelula_3.webp" data-caption="El Sueño de la Libélula by Soseki, haiku 3">
+          <img src="images/thumbs/soseki_libelula_3.webp" alt="El Sueño de la Libélula by Soseki, haiku 3" width="600" height="900" loading="lazy">
+        </a>
+      </div>
+
+      <div class="item" data-tags="book-illustration">
+        <a href="images/full/tagore_luna_portada.webp" data-caption="The Crescent Moon by Tagore, front page (1/2)">
+          <img src="images/thumbs/tagore_luna_portada.webp" alt="The Crescent Moon by Tagore, front page" width="600" height="900" loading="lazy">
+        </a>
+        <a class="spread" href="images/spreads/tagore_luna_book-portada.webp" data-caption="The Crescent Moon by Tagore, front page (2/2)"></a>
+      </div>
+
+      <div class="item" data-tags="portraits book-illustration">
+        <a href="images/full/tagore.webp" data-caption="Portrait of indian poet Tagore (1/2s)">
+          <img src="images/thumbs/tagore.webp" alt="Portrait of indian poet Tagore"" width="600" height="800" loading="lazy">
+        </a>
+        <a class="spread" href="images/spreads/tagore_luna_book-tagore.webp" data-caption="The Crescent Moon by Tagore, Portrait of author (2/2)"></a>
+      </div>
+
+      <div class="item" data-tags="book-illustration">
+        <a href="images/full/tagore_luna_23.webp" data-caption="The Crescent Moon by Tagore, Poem 23 (1/2)">
+          <img src="images/thumbs/tagore_luna_23.webp" alt="The Crescent Moon by Tagore, Poem 23" width="600" height="900" loading="lazy">
+        </a>
+        <a class="spread" href="images/spreads/tagore_luna_book-23.webp" data-caption="The Crescent Moon by Tagore, Poem 23 (2/2)"></a>
+      </div>
+
+      <div class="item" data-tags="book-illustration">
+        <a href="images/full/tagore_luna_12.webp" data-caption="The Crescent Moon by Tagore, Poem 12 (1/2)">
+          <img src="images/thumbs/tagore_luna_12.webp" alt="The Crescent Moon by Tagore, Poem 12" width="600" height="900" loading="lazy">
+        </a>
+        <a class="spread" href="images/spreads/tagore_luna_book-12.webp" data-caption="The Crescent Moon by Tagore, Poem 12 (2/2)"></a>
+      </div>
+
+      <div class="item" data-tags="portraits">
+        <a href="images/full/ursula_k_le_guin.webp" data-caption="Portrait of Ursula K. le Guin">
+          <img src="images/thumbs/ursula_k_le_guin.webp" alt="Portrait of Ursula K. le Guin" width="600" height="900" loading="lazy">
+        </a>
+      </div>
+
+      <div class="item" data-tags="book-illustration">
+        <a href="images/full/tagore_luna_16.webp" data-caption="The Crescent Moon by Tagore, Poem 16 (1/2)">
+          <img src="images/thumbs/tagore_luna_16.webp" alt="The Crescent Moon by Tagore, Poem 16" width="600" height="900" loading="lazy">
+        </a>
+        <a class="spread" href="images/spreads/tagore_luna_book-16.webp" data-caption="The Crescent Moon by Tagore, Poem 16 (2/2)"></a>
+      </div>
+
+      <div class="item" data-tags="portraits">
+        <a href="images/full/aldous_huxley.webp" data-caption="Portrait of Aldous Huxley">
+          <img src="images/thumbs/aldous_huxley.webp" alt="Portrait of Aldous Huxley" width="600" height="900" loading="lazy">
+        </a>
+      </div>
+
+      <div class="item" data-tags="book-illustration">
+        <a href="images/full/tagore_luna_18.webp" data-caption="The Crescent Moon by Tagore, Poem 18 (1/2)">
+          <img src="images/thumbs/tagore_luna_18.webp" alt="The Crescent Moon by Tagore, Poem 18" width="600" height="900" loading="lazy">
+        </a>
+        <a class="spread" href="images/spreads/tagore_luna_book-18.webp" data-caption="The Crescent Moon by Tagore, Poem 18 (2/2)"></a>
+      </div>
+
+      <div class="item" data-tags="book-illustration">
+        <a href="images/full/tagore_luna_19.webp" data-caption="The Crescent Moon by Tagore, Poem 19 (1/2)">
+          <img src="images/thumbs/tagore_luna_19.webp" alt="The Crescent Moon by Tagore, Poem 19" width="600" height="900" loading="lazy">
+        </a>
+        <a class="spread" href="images/spreads/tagore_luna_book-19.webp" data-caption="The Crescent Moon by Tagore, Poem 19 (2/2)"></a>
+      </div>
+
+      <div class="item" data-tags="book-illustration">
+        <a href="images/full/tagore_luna_1.webp" data-caption="The Crescent Moon by Tagore, Poem 1 (1/2)">
+          <img src="images/thumbs/tagore_luna_1.webp" alt="The Crescent Moon by Tagore, Poem 1" width="600" height="900" loading="lazy">
+        </a>
+        <a class="spread" href="images/spreads/tagore_luna_book-1.webp" data-caption="The Crescent Moon by Tagore, Poem 1 (2/2)"></a>
+      </div>
+    
+      <!-- <div class="item" data-tags="book-illustration">
+        <a href="images/full/book-01.webp" data-caption="Book Title, illustration 01 (1/2)">
+          <img src="images/thumbs/book-01.webp" alt="Placeholder book illustration 01" width="600" height="900" loading="lazy">
+        </a>
+        <div class="description">
+          <p>Placeholder description. Use one or two short paragraphs to give context for this piece: the story behind it, the materials, the technique or the commission.</p>
+          <p>A second paragraph can add details such as the year, the size or the process.</p>
+        </div>
+        <a class="spread" href="images/spreads/book-01.webp" data-caption="Book Title, pp. 2-3 (2/2)"></a>
+      </div> -->
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span>&copy; 2026 Jose Blanco Perales</span>
+    <!-- <a href="https://www.instagram.com/your-username/" target="_blank" rel="noopener">Instagram</a> -->
+  </footer>
+
+  <script src="vendor/glightbox.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
 </html>

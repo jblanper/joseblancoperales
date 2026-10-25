@@ -1,0 +1,391 @@
+/* ==========================================================================
+   Portfolio styles
+   Colors, spacing and fonts can be changed in the :root block below.
+   ========================================================================== */
+
+/* ---------- Font: Inter, self-hosted (see fonts/) ---------- */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../fonts/inter-latin-300-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/inter-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/inter-latin-500-normal.woff2") format("woff2");
+}
+
+/* ---------- Settings ---------- */
+:root {
+  --color-bg: #fff;
+  --color-text: #1a1a1a;
+  --color-muted: #6b6b6b;
+  --color-line: #e6e6e6;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --page-margin: 20px;   /* space at the left and right edge of the page */
+  --gap: 10px;           /* space between mosaic images */
+  --columns: 4;          /* mosaic columns on desktop */
+  --logo-width: 100px;
+  --reading-width: 640px;
+  --fade: 200ms;         /* keep in sync with FADE_MS in js/main.js */
+}
+
+@media (max-width: 1000px) {
+  :root { --columns: 3; }
+}
+
+@media (max-width: 600px) {
+  :root { --columns: 2; --page-margin: 12px; }
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 3px;
+}
+
+/* ---------- Header ---------- */
+/* A thin line under the header separates the site menu from the page content. */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;   /* the menu lines up with the bottom edge of the logo */
+  gap: 16px 24px;
+  margin: 0 var(--page-margin);
+  padding: 24px 0 20px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.logo {
+  display: block;
+  flex: none;              /* the logo never shrinks */
+}
+
+.logo img {
+  display: block;
+  width: var(--logo-width);
+  height: auto;
+}
+
+/* Site menu: the main level. Larger and dark, the current page is underlined. */
+.site-header nav {
+  display: flex;
+  gap: 28px;
+  font-size: 1rem;
+  line-height: 1.2;
+  padding-bottom: 4px;     /* optical alignment with the logo's bottom edge: adjust to taste */
+}
+
+.site-header nav a {
+  color: var(--color-text);
+  text-decoration: none;
+  text-underline-offset: 6px;
+}
+
+.site-header nav a:hover,
+.site-header nav a[aria-current="page"] {
+  text-decoration: underline;
+}
+
+/* Phones: same layout, smaller logo. Logo on the left, menu on the right, one row. */
+@media (max-width: 600px) {
+  :root { --logo-width: 84px; }
+
+  .site-header {
+    gap: 12px;
+    padding: 16px 0 14px;
+  }
+
+  .site-header nav {
+    gap: 18px;
+    font-size: 0.95rem;
+  }
+}
+
+/* ---------- Page content ---------- */
+main {
+  padding: 22px var(--page-margin) 48px;
+}
+
+/* ---------- Filters ---------- */
+/* Secondary level: small, uppercase and muted. The active one is dark and medium weight. */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin-bottom: 22px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.filters button {
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: var(--color-muted);
+  cursor: pointer;
+}
+
+.filters button:hover {
+  color: var(--color-text);
+}
+
+.filters button[aria-pressed="true"] {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+/* ---------- Mosaic ---------- */
+/* CSS columns: images keep their own proportions and stack in each column. */
+.mosaic {
+  columns: var(--columns);
+  column-gap: var(--gap);
+  transition: opacity var(--fade) ease;
+}
+
+.mosaic.is-fading {
+  opacity: 0;
+}
+
+.item {
+  break-inside: avoid;
+  margin-bottom: var(--gap);
+}
+
+.item[hidden],
+.item .spread,
+.item .description {
+  display: none; /* the book spread and the long description are only used by the lightbox */
+}
+
+.item a {
+  position: relative;
+  display: block;
+}
+
+.item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: opacity 0.2s ease;
+}
+
+.item a:hover img {
+  opacity: 0.85;
+}
+
+/* Small "more than one image" icon (two overlapping pages) on the pieces that have a book spread */
+.item:has(.spread) > a:first-child::after {
+  content: "";
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  width: 26px;
+  height: 26px;
+  background: rgba(0, 0, 0, 0.45)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.7' stroke-linejoin='round' stroke-linecap='round'%3E%3Crect x='3.5' y='8.5' width='12' height='12' rx='1.5'/%3E%3Cpath d='M8.5 5.5h10a2 2 0 0 1 2 2v10'/%3E%3C/svg%3E")
+    center / 17px no-repeat;
+  pointer-events: none;
+}
+
+/* ---------- About page ---------- */
+.about-banner {
+  display: block;
+  width: 100%;
+  height: 280px;
+  object-fit: cover; /* crops the image to the fixed height */
+}
+
+.about-text {
+  max-width: var(--reading-width);
+  margin: 48px auto 0;
+  font-size: 1.125rem;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+.about-text p {
+  margin: 0 0 1.4em;
+}
+
+.about-text a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .about-banner { height: 180px; }
+  .about-text { margin-top: 32px; font-size: 1.05rem; }
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px var(--page-margin);
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+.site-footer a {
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--color-text);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Lightbox (GLightbox): white version to match the site
+   ========================================================================== */
+.goverlay,
+.glightbox-mobile .goverlay {
+  background: var(--color-bg);
+}
+
+.glightbox-clean .gslide-media {
+  box-shadow: none;
+}
+
+/* Arrows and close button: dark icons, no background */
+.glightbox-clean .gprev,
+.glightbox-clean .gnext,
+.glightbox-clean .gclose {
+  background-color: transparent;
+}
+
+.glightbox-clean .gprev:hover,
+.glightbox-clean .gnext:hover,
+.glightbox-clean .gclose:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.glightbox-clean .gprev path,
+.glightbox-clean .gnext path,
+.glightbox-clean .gclose path {
+  fill: var(--color-text);
+}
+
+/* Caption (title) and long description */
+.glightbox-clean .gslide-description {
+  background: transparent;
+}
+
+.glightbox-clean .gdesc-inner {
+  padding: 12px 20px 20px;
+  text-align: left;
+}
+
+.glightbox-clean .gslide-title {
+  margin-bottom: 0;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.glightbox-clean .gslide-title + .gslide-desc {
+  margin-top: 14px;
+}
+
+.glightbox-clean .gslide-desc {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+/* Slides without a long description: just a centered, muted caption under the image */
+.glightbox-clean .description-bottom .gdesc-inner {
+  text-align: center;
+}
+
+.glightbox-clean .description-bottom .gslide-title {
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
+/* Desktop: the long description sits to the right of the image and scrolls if it is long */
+@media (min-width: 769px) {
+  .gslide-description.description-right {
+    max-width: 340px;
+  }
+
+  .glightbox-clean .description-right .gdesc-inner {
+    padding: 0 20px 0 32px;
+  }
+}
+
+/* Phones: GLightbox lays the caption over the bottom of the image.
+   Here it is a soft white fade with dark text, and long descriptions are cut with "See more". */
+.glightbox-mobile .glightbox-container .gslide-description {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.96) 40%);
+}
+
+.glightbox-mobile .glightbox-container .gdesc-inner {
+  text-align: left;
+}
+
+.glightbox-mobile .glightbox-container .gslide-title,
+.glightbox-mobile .glightbox-container .gslide-desc {
+  color: var(--color-text);
+}
+
+.glightbox-mobile .glightbox-container .gslide-desc .desc-more {
+  color: var(--color-text);
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* ---------- Respect "reduce motion" ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .mosaic,
+  .item img {
+    transition: none;
+  }
+}

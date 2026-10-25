@@ -1,0 +1,14 @@
+# Source files: high-resolution PNGs and the book PDF. The website does not use them.
+originals/
+
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+
+# Logs and temporary files
+*.log
+*.tmp
