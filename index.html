@@ -31,27 +31,6 @@
       <button type="button" data-filter="portraits" aria-pressed="false">Portraits</button>
     </div>
 
-    <!--
-      HOW TO ADD A PIECE
-      Copy one block below, paste it where you want it in the mosaic, and change:
-        - data-tags       the tag(s) of the piece, separated by spaces
-        - href            the full-size image (made by tools/build-images.sh)
-        - data-caption    the short caption shown in the lightbox
-        - src, alt        the thumbnail and its description
-        - width, height   the thumbnail size in pixels (the script prints it)
-        - .description    optional longer text (one or two paragraphs, plain HTML). In the lightbox it
-                          appears beside the image, and over the bottom of the image on phones.
-                          Delete the whole div if the piece does not need one.
-
-      A book illustration has a second link (class="spread") with the book spread. It has no
-      image inside: it is hidden in the mosaic and shown as the next slide in the lightbox.
-      Pieces with a spread get a small "two pages" icon in the mosaic and a hover tooltip
-      automatically.
-
-      SHAREABLE LINKS
-      Every slide has a link made from its image file name: index.html#portrait-03 opens that
-      piece, and index.html#book-03-spread opens its book spread. Nothing to configure.
-    -->
     <div class="mosaic" id="mosaic">
 
       <div class="item" data-tags="book-illustration">
@@ -132,6 +111,12 @@
           <img src="images/thumbs/tagore_luna_1.webp" alt="The Crescent Moon by Tagore, Poem 1" width="600" height="900" loading="lazy">
         </a>
         <a class="spread" href="images/spreads/tagore_luna_book-1.webp" data-caption="The Crescent Moon by Tagore, Poem 1 (2/2)"></a>
+      </div>
+
+      <div class="item" data-tags="portraits">
+        <a href="images/full/self_portrait.webp" data-caption="Self-portrait">
+          <img src="images/thumbs/self_portrait.webp" alt="Self-portrait" width="600" height="900" loading="lazy">
+        </a>
       </div>
     
       <!-- <div class="item" data-tags="book-illustration">

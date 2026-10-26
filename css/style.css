@@ -38,7 +38,6 @@
   --gap: 10px;           /* space between mosaic images */
   --columns: 4;          /* mosaic columns on desktop */
   --logo-width: 100px;
-  --reading-width: 640px;
   --fade: 200ms;         /* keep in sync with FADE_MS in js/main.js */
 }
 
@@ -230,16 +229,20 @@ main {
 }
 
 /* ---------- About page ---------- */
-.about-banner {
-  display: block;
-  width: 100%;
-  height: 280px;
-  object-fit: cover; /* crops the image to the fixed height */
+/* Text on the left and the portrait on the right (the figure faces left, towards the text).
+   On phones the portrait goes first and the text below it. */
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  grid-template-areas: "text portrait";
+  gap: 64px;
+  align-items: center;     /* the text is centered against the taller portrait */
+  max-width: 1000px;
+  margin: 24px auto 0;
 }
 
 .about-text {
-  max-width: var(--reading-width);
-  margin: 48px auto 0;
+  grid-area: text;
   font-size: 1.125rem;
   font-weight: 300;
   line-height: 1.8;
@@ -249,14 +252,42 @@ main {
   margin: 0 0 1.4em;
 }
 
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
 .about-text a {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-@media (max-width: 600px) {
-  .about-banner { height: 180px; }
-  .about-text { margin-top: 32px; font-size: 1.05rem; }
+.about-portrait {
+  grid-area: portrait;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 800px) {
+  .about {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "portrait"
+      "text";
+    gap: 32px;
+    margin-top: 8px;
+  }
+
+  .about-text {
+    font-size: 1.05rem;
+  }
+
+  .about-portrait {
+    justify-self: center;
+    width: auto;
+    max-width: 100%;
+    max-height: 55vh;      /* the first lines of text stay visible below the portrait */
+  }
 }
 
 /* ---------- Footer ---------- */
