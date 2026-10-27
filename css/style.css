@@ -39,6 +39,7 @@
   --columns: 4;          /* mosaic columns on desktop */
   --logo-width: 100px;
   --fade: 200ms;         /* keep in sync with FADE_MS in js/main.js */
+  --color-image-edge: var(--color-line);   /* hairline around the illustrations */
 }
 
 @media (max-width: 1000px) {
@@ -212,6 +213,13 @@ main {
 
 .item a:hover img {
   opacity: 0.85;
+}
+
+.item img,
+.about-portrait,
+.glightbox-clean .gslide-image img {
+  outline: 1px solid var(--color-image-edge);
+  outline-offset: -1px;
 }
 
 /* Small "more than one image" icon (two overlapping pages) on the pieces that have a book spread */
