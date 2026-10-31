@@ -421,6 +421,30 @@ main {
   text-decoration: underline;
 }
 
+/* Focus mode (a click on the image): no caption or description, and the image fills the
+   screen: it fits the height, or the width if the image is wider than the screen. */
+.glightbox-clean .gslide-image img {
+  cursor: zoom-in;         /* just a hint: there is no zoom, a click toggles focus mode */
+}
+
+.lightbox-focus .glightbox-clean .gslide-image img {
+  cursor: zoom-out;
+  max-height: 100vh !important;    /* !important: GLightbox sets a max-height inline to leave room for the caption */
+  max-height: 100dvh !important;   /* phones: the visible height, without the browser bars */
+}
+
+.lightbox-focus .glightbox-container .gslide-description {
+  position: absolute;     /* out of the layout, but still measured by GLightbox */
+  visibility: hidden;
+}
+
+/* Arrows and close button stay, with a faint backing so they remain visible over dark images */
+.lightbox-focus .glightbox-clean .gprev,
+.lightbox-focus .glightbox-clean .gnext,
+.lightbox-focus .glightbox-clean .gclose {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
 /* ---------- Respect "reduce motion" ---------- */
 @media (prefers-reduced-motion: reduce) {
   .mosaic,

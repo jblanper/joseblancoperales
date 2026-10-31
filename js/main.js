@@ -52,6 +52,7 @@ if (mosaic) {
       title: link.dataset.caption,
       description: description ? description.innerHTML.trim() : '',
       descPosition: description ? 'right' : 'bottom',
+      zoomable: false, // a click on the image toggles focus mode instead (see below)
     };
   }
 
@@ -75,7 +76,32 @@ if (mosaic) {
   }
 
   lightbox.on('slide_changed', ({ current }) => setHash(openLinks[current.index]));
-  lightbox.on('close', () => setHash(null));
+  lightbox.on('close', () => {
+    setHash(null);
+    document.body.classList.remove('lightbox-focus');
+  });
+
+  // Focus mode: a click or tap on the image hides the caption and description and lets the image
+  // fill the screen (see .lightbox-focus in style.css). Another one goes back. It stays on while
+  // moving between slides and is reset when the lightbox closes.
+  // Pointer events instead of "click": on phones GLightbox cancels the touch, so no click is sent.
+  // A press that moves more than a few pixels is a swipe or a drag, not a tap.
+  let pressStart = null;
+
+  document.addEventListener('pointerdown', (event) => {
+    pressStart = { x: event.clientX, y: event.clientY };
+  });
+
+  document.addEventListener('pointerup', (event) => {
+    const start = pressStart;
+    pressStart = null;
+    if (!start || event.button !== 0) return;
+    if (Math.hypot(event.clientX - start.x, event.clientY - start.y) > 10) return;
+
+    if (event.target.closest('.glightbox-container .gslide-image img')) {
+      document.body.classList.toggle('lightbox-focus');
+    }
+  });
 
   // Phones: tapping "See more" expands the text and dims the image (GLightbox adds the class
   // gdesc-open to <body>). Swiping to another slide does not collapse it, so the next image
