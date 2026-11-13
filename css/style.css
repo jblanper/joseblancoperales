@@ -311,6 +311,7 @@ button {
   min-height: 0;
   padding: 0 var(--page-pad) 24px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* Content of the viewer, built by script.js from each piece.
@@ -320,6 +321,18 @@ button {
   flex-direction: column;
   gap: 24px;
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .detail { animation: detail-in 0.2s ease-out; }
+}
+
+@keyframes detail-in {
+  from { transform: translateX(calc(var(--slide, 0) * 10px)); }
+  to   { transform: none; }
+}
+
+.detail[data-direction="1"]  { --slide: 1; }
+.detail[data-direction="-1"] { --slide: -1; }
 
 .detail__illustration,
 .detail__spread {

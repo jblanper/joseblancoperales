@@ -21,7 +21,22 @@
     let items = [];   // pieces that can be browsed (the visible ones)
     let index = 0;
 
-    function render() {
+    const preloaded = new Set();
+
+    // Download the images of a piece in advance, so they are ready when the user gets there
+    function preload(piece) {
+      const sources = [
+        piece.querySelector('.piece__link').getAttribute('href'),
+        piece.querySelector('template').content.querySelector('img')?.getAttribute('src'),
+      ];
+      sources.forEach((source) => {
+        if (!source || preloaded.has(source)) return;
+        preloaded.add(source);
+        new Image().src = source;
+      });
+    }
+
+    function render(direction = 0) {
       const piece = items[index];
       const type = piece.dataset.type;
 
@@ -36,6 +51,7 @@
       const detail = document.createElement('div');
       detail.className = 'detail';
       detail.dataset.type = type;
+      detail.dataset.direction = direction;
       detail.append(image, side);
 
       body.replaceChildren(detail);
@@ -43,11 +59,14 @@
 
       number.textContent = `${pad(index + 1)} / ${pad(items.length)}`;
       label.textContent = TYPE_LABELS[type];
+
+      preload(items[(index + 1) % items.length]);
+      preload(items[(index - 1 + items.length) % items.length]);
     }
 
     function go(step) {
       index = (index + step + items.length) % items.length;
-      render();
+      render(step);
     }
 
     function open(piece) {
