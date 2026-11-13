@@ -3,50 +3,72 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About · Jose Blanco Perales</title>
-  <meta name="description" content="About Jose Blanco Perales, illustrator.">
-  <link rel="preload" href="fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <title>About — José Blanco Perales, Illustrator</title>
+  <meta name="description" content="About José Blanco Perales, illustrator: who he is, what he does and how to contact him.">
+  <meta name="theme-color" content="#ececea">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About — José Blanco Perales, Illustrator">
+  <meta property="og:description" content="Who José Blanco Perales is, what he does and how to contact him.">
+  <meta property="og:image" content="https://joseblancoperales.com/img/preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="img/seal.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/newsreader-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="favicon.ico" sizes="32x32">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 <body>
 
   <header class="site-header">
-    <a class="logo" href="index.html">
-      <img src="images/portfolio_square_logo.svg" alt="Jose Blanco Perales" width="110" height="110">
-    </a>
-    <nav aria-label="Main">
-      <a href="index.html">Illustrations</a>
-      <a href="about.html" aria-current="page">About</a>
-    </nav>
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html" aria-label="José Blanco Perales, home">
+        <img src="img/seal.svg" alt="" width="48" height="48">
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html#fiction">Fiction</a>
+        <a href="index.html#portraits">Portraits</a>
+        <a href="about.html" aria-current="page">About</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
+  <main class="page">
     <div class="about">
-      <div class="about-text">
-        <p>
-          José Blanco Perales is an illustrator based in Madrid, Spain. He specializes in book illustration, particularly for fiction and poetry, as well as portraiture.
-        </p>
-        <p>
-          For commissions and collaborations, write to jblanper[at]gmail[dot]com.
-        </p>
-        <!-- <p>
-          You can see more of my work and what I'm up to on
-          <a href="https://www.instagram.com/your-username/" target="_blank" rel="noopener">Instagram</a>.
-        </p> -->
+
+      <div class="about__portrait">
+        <img src="img/about/self_portrait.webp" alt="Self-portrait of José Blanco Perales" width="1270" height="1800">
       </div>
 
-      <!-- Set width and height to the real pixel size of the file (the image script prints it) -->
-      <img class="about-portrait" src="images/full/self_portrait.webp"
-           alt="Self-portrait illustration of Jose Blanco Perales"
-           width="1320" height="2000">
+      <div class="about__text">
+        <h1 class="about__name">José Blanco Perales</h1>
+        <p class="about__role">Illustrator</p>
+
+        <div class="about__bio">
+          <p>José is an illustrator based in Madrid, Spain. He works in traditional media, specializing in book illustration, particularly fiction and poetry, and in portraiture.</p>
+          <p>Available for editorial commissions.</p>
+        </div>
+        
+        
+        <h2 class="section__title about__heading">Contact</h2>
+        <a class="about__email" href="mailto:jblanper@gmail.com">jblanper@gmail.com</a>
+
+        <!-- <h2 class="section__title about__heading">Selected publications</h2>
+        <ul class="publications">
+          <li><span>Publication 1</span> <span class="publications__detail">[Author] · [Year]</span></li>
+          <li><span>Publication 2</span> <span class="publications__detail">[Author] · [Year]</span></li>
+          <li><span>Publication 3</span> <span class="publications__detail">[Author] · [Year]</span></li>
+        </ul> -->
+      </div>
+      
     </div>
   </main>
 
   <footer class="site-footer">
-    <span>&copy; 2026 Jose Blanco Perales</span>
-    <!-- <a href="https://www.instagram.com/your-username/" target="_blank" rel="noopener">Instagram</a> -->
+    <div class="page site-footer__inner">
+      <span>© 2026 José Blanco Perales</span>
+      <a href="mailto:jblanper@gmail.com">jblanper@gmail.com</a>
+    </div>
   </footer>
 
 </body>

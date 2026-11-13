@@ -1,454 +1,593 @@
 /* ==========================================================================
-   Portfolio styles
-   Colors, spacing and fonts can be changed in the :root block below.
+   1. Settings (colours, fonts, sizes: change them here)
+   2. Base
+   3. Header
+   4. Intro and sections
+   5. Grid of pieces
+   6. Viewer
+   7. About page
+   8. Footer
+   9. Tablet and desktop (everything above is written for mobile first)
    ========================================================================== */
 
-/* ---------- Font: Inter, self-hosted (see fonts/) ---------- */
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("../fonts/inter-latin-300-normal.woff2") format("woff2");
-}
+
+/* 1. Settings
+   -------------------------------------------------------------------------- */
+
+/* Fonts (self-hosted) */
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("../fonts/inter-latin-400-normal.woff2") format("woff2");
+  src: url("../fonts/inter-400.woff2") format("woff2");
 }
+
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("../fonts/inter-latin-500-normal.woff2") format("woff2");
+  src: url("../fonts/inter-500.woff2") format("woff2");
 }
 
-/* ---------- Settings ---------- */
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/newsreader-400.woff2") format("woff2");
+}
+
 :root {
-  --color-bg: #fff;
-  --color-text: #1a1a1a;
-  --color-muted: #6b6b6b;
-  --color-line: #e6e6e6;
-  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --color-bg: #ececea;
+  --color-paper: #ffffff;
+  --color-ink: #1a1a1a;
+  --color-muted: #595959;
 
-  --page-margin: 20px;   /* space at the left and right edge of the page */
-  --gap: 10px;           /* space between mosaic images */
-  --columns: 4;          /* mosaic columns on desktop */
-  --logo-width: 100px;
-  --fade: 200ms;         /* keep in sync with FADE_MS in js/main.js */
-  --color-image-edge: var(--color-line);   /* hairline around the illustrations */
-}
+  --font-sans: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: Newsreader, Georgia, "Times New Roman", serif;
 
-@media (max-width: 1000px) {
-  :root { --columns: 3; }
-}
+  --page-max: 1440px;
+  --page-pad: 16px;       /* side margin of the page */
+  --columns: 2;           /* columns of the grid */
+  --gap: 16px;            /* space between pieces */
 
-@media (max-width: 600px) {
-  :root { --columns: 2; --page-margin: 12px; }
-}
+  --seal-size: 40px;
+  --header-pad: 16px;
+  --header-height: calc(var(--seal-size) + var(--header-pad) * 2);
+  --viewer-bar: 56px;
+  }
 
-/* ---------- Base ---------- */
+
+/* 2. Base
+   -------------------------------------------------------------------------- */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+[hidden] {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 body {
   margin: 0;
   background: var(--color-bg);
-  color: var(--color-text);
-  font-family: var(--font-body);
-  font-weight: 400;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Page behind the viewer does not scroll while it is open */
+body:has(.viewer[open]) {
+  overflow: hidden;
+}
+
+h1, h2, h3, p, ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
 }
 
 img {
+  display: block;
   max-width: 100%;
   height: auto;
 }
 
 a {
   color: inherit;
-}
-
-:focus-visible {
-  outline: 2px solid var(--color-text);
-  outline-offset: 3px;
-}
-
-/* ---------- Header ---------- */
-/* A thin line under the header separates the site menu from the page content. */
-.site-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;   /* the menu lines up with the bottom edge of the logo */
-  gap: 16px 24px;
-  margin: 0 var(--page-margin);
-  padding: 24px 0 20px;
-  border-bottom: 1px solid var(--color-line);
-}
-
-.logo {
-  display: block;
-  flex: none;              /* the logo never shrinks */
-}
-
-.logo img {
-  display: block;
-  width: var(--logo-width);
-  height: auto;
-}
-
-/* Site menu: the main level. Larger and dark, the current page is underlined. */
-.site-header nav {
-  display: flex;
-  gap: 28px;
-  font-size: 1rem;
-  line-height: 1.2;
-  padding-bottom: 4px;     /* optical alignment with the logo's bottom edge: adjust to taste */
-}
-
-.site-header nav a {
-  color: var(--color-text);
   text-decoration: none;
-  text-underline-offset: 6px;
 }
 
-.site-header nav a:hover,
-.site-header nav a[aria-current="page"] {
-  text-decoration: underline;
+a:hover {
+  color: var(--color-muted);
 }
 
-/* Phones: same layout, smaller logo. Logo on the left, menu on the right, one row. */
-@media (max-width: 600px) {
-  :root { --logo-width: 84px; }
-
-  .site-header {
-    gap: 12px;
-    padding: 16px 0 14px;
-  }
-
-  .site-header nav {
-    gap: 18px;
-    font-size: 0.95rem;
-  }
-}
-
-/* ---------- Page content ---------- */
-main {
-  padding: 22px var(--page-margin) 48px;
-}
-
-/* ---------- Filters ---------- */
-/* Secondary level: small, uppercase and muted. The active one is dark and medium weight. */
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 22px;
-  margin-bottom: 22px;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.filters button {
-  padding: 4px 0;
+button {
+  padding: 0;
   border: 0;
   background: none;
+  color: inherit;
   font: inherit;
-  letter-spacing: inherit;
-  text-transform: inherit;
-  color: var(--color-muted);
   cursor: pointer;
 }
 
-.filters button:hover {
-  color: var(--color-text);
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 4px;
 }
 
-.filters button[aria-pressed="true"] {
-  color: var(--color-text);
-  font-weight: 500;
+/* Centred column shared by header, content and footer */
+.page,
+.site-header__inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding-inline: var(--page-pad);
 }
 
-/* ---------- Mosaic ---------- */
-/* CSS columns: images keep their own proportions and stack in each column. */
-.mosaic {
-  columns: var(--columns);
-  column-gap: var(--gap);
-  transition: opacity var(--fade) ease;
-}
 
-.mosaic.is-fading {
-  opacity: 0;
-}
-
-.item {
-  break-inside: avoid;
-  margin-bottom: var(--gap);
-}
-
-.item[hidden],
-.item .spread,
-.item .description {
-  display: none; /* the book spread and the long description are only used by the lightbox */
-}
-
-.item a {
-  position: relative;
-  display: block;
-}
-
-.item img {
-  display: block;
-  width: 100%;
-  height: auto;
-  transition: opacity 0.2s ease;
-}
-
-.item a:hover img {
-  opacity: 0.85;
-}
-
-.item img,
-.about-portrait,
-.glightbox-clean .gslide-image img {
-  outline: 1px solid var(--color-image-edge);
-  outline-offset: -1px;
-}
-
-/* Small "more than one image" icon (two overlapping pages) on the pieces that have a book spread */
-.item:has(.spread) > a:first-child::after {
-  content: "";
-  position: absolute;
-  right: 8px;
-  bottom: 8px;
-  width: 26px;
-  height: 26px;
-  background: rgba(0, 0, 0, 0.45)
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.7' stroke-linejoin='round' stroke-linecap='round'%3E%3Crect x='3.5' y='8.5' width='12' height='12' rx='1.5'/%3E%3Cpath d='M8.5 5.5h10a2 2 0 0 1 2 2v10'/%3E%3C/svg%3E")
-    center / 17px no-repeat;
-  pointer-events: none;
-}
-
-/* ---------- About page ---------- */
-/* Text on the left and the portrait on the right (the figure faces left, towards the text).
-   On phones the portrait goes first and the text below it. */
-.about {
-  display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
-  grid-template-areas: "text portrait";
-  gap: 64px;
-  align-items: center;     /* the text is centered against the taller portrait */
-  max-width: 1000px;
-  margin: 24px auto 0;
-}
-
-.about-text {
-  grid-area: text;
-  font-size: 1.125rem;
-  font-weight: 300;
-  line-height: 1.8;
-}
-
-.about-text p {
-  margin: 0 0 1.4em;
-}
-
-.about-text p:last-child {
-  margin-bottom: 0;
-}
-
-.about-text a {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.about-portrait {
-  grid-area: portrait;
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-@media (max-width: 800px) {
-  .about {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas:
-      "portrait"
-      "text";
-    gap: 32px;
-    margin-top: 8px;
-  }
-
-  .about-text {
-    font-size: 1.05rem;
-  }
-
-  .about-portrait {
-    justify-self: center;
-    width: auto;
-    max-width: 100%;
-    max-height: 55vh;      /* the first lines of text stay visible below the portrait */
-  }
-}
-
-/* ---------- Footer ---------- */
-.site-footer {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 24px var(--page-margin);
-  font-size: 0.8rem;
-  color: var(--color-muted);
-}
-
-.site-footer a {
-  text-decoration: none;
-}
-
-.site-footer a:hover {
-  color: var(--color-text);
-  text-decoration: underline;
-}
-
-/* ==========================================================================
-   Lightbox (GLightbox): white version to match the site
-   ========================================================================== */
-.goverlay,
-.glightbox-mobile .goverlay {
+/* 3. Header
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   background: var(--color-bg);
 }
 
-.glightbox-clean .gslide-media {
-  box-shadow: none;
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: var(--header-pad);
 }
 
-/* Arrows and close button: dark icons, no background */
-.glightbox-clean .gprev,
-.glightbox-clean .gnext,
-.glightbox-clean .gclose {
-  background-color: transparent;
+.site-header__logo img {
+  width: var(--seal-size);
+  height: var(--seal-size);
 }
 
-.glightbox-clean .gprev:hover,
-.glightbox-clean .gnext:hover,
-.glightbox-clean .gclose:hover {
-  background-color: rgba(0, 0, 0, 0.06);
+.site-nav {
+  display: flex;
+  gap: 24px;
 }
 
-.glightbox-clean .gprev path,
-.glightbox-clean .gnext path,
-.glightbox-clean .gclose path {
-  fill: var(--color-text);
+.site-nav a {
+  display: inline-block;
+  padding: 12px 0;
 }
 
-/* Caption (title) and long description */
-.glightbox-clean .gslide-description {
-  background: transparent;
+.site-nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
 }
 
-.glightbox-clean .gdesc-inner {
-  padding: 12px 20px 20px;
-  text-align: left;
+
+/* 4. Intro and sections
+   -------------------------------------------------------------------------- */
+.intro {
+  padding-top: 8px;
 }
 
-.glightbox-clean .gslide-title {
-  margin-bottom: 0;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 500;
-  line-height: 1.5;
-  color: var(--color-text);
-}
-
-.glightbox-clean .gslide-title + .gslide-desc {
-  margin-top: 14px;
-}
-
-.glightbox-clean .gslide-desc {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 300;
-  line-height: 1.7;
-  color: var(--color-text);
-}
-
-/* Slides without a long description: just a centered, muted caption under the image */
-.glightbox-clean .description-bottom .gdesc-inner {
-  text-align: center;
-}
-
-.glightbox-clean .description-bottom .gslide-title {
+.intro__name {
+  font-family: var(--font-serif);
+  font-size: 22px;
   font-weight: 400;
+  line-height: 1.2;
+}
+
+.intro__role {
+  margin-left: 10px;
+  font-family: var(--font-sans);
+  font-size: 14px;
   color: var(--color-muted);
 }
 
-/* Desktop: the long description sits to the right of the image and scrolls if it is long */
-@media (min-width: 769px) {
-  .gslide-description.description-right {
-    max-width: 340px;
-  }
-
-  .glightbox-clean .description-right .gdesc-inner {
-    padding: 0 20px 0 32px;
-  }
+.section {
+  scroll-margin-top: var(--header-height);
 }
 
-/* Phones: GLightbox lays the caption over the bottom of the image.
-   Here it is a soft white fade with dark text, and long descriptions are cut with "See more". */
-.glightbox-mobile .glightbox-container .gslide-description {
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.96) 40%);
+.intro + .section {
+  margin-top: 32px;
 }
 
-.glightbox-mobile .glightbox-container .gdesc-inner {
-  text-align: left;
+.section + .section {
+  margin-top: 64px;
 }
 
-.glightbox-mobile .glightbox-container .gslide-title,
-.glightbox-mobile .glightbox-container .gslide-desc {
-  color: var(--color-text);
+.section__title {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
-.glightbox-mobile .glightbox-container .gslide-desc .desc-more {
-  color: var(--color-text);
-  opacity: 1;
+
+/* 5. Grid of pieces
+   -------------------------------------------------------------------------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  gap: var(--gap);
+}
+
+.section__title + .grid {
+  margin-top: 24px;
+}
+
+.filters + .grid {
+  margin-top: 12px;
+}
+
+.piece__link {
+  display: block;
+}
+
+.piece__link:hover {
+  opacity: 0.85;
+}
+
+
+/* 6. Viewer
+   The viewer is a <dialog> that covers the whole screen.
+   -------------------------------------------------------------------------- */
+.viewer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+
+.viewer[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.viewer__bar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--viewer-bar);
+  padding-inline: var(--page-pad);
+}
+
+.viewer__number {
+  font-weight: 500;
+}
+
+.viewer__label {
+  margin-left: 12px;
+  color: var(--color-muted);
+}
+
+.viewer__controls {
+  display: flex;
+  gap: 4px;
+  margin-right: -17px;
+}
+
+.viewer__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+}
+
+.viewer__button svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.viewer__body {
+  flex: 1;
+  min-height: 0;
+  padding: 0 var(--page-pad) 24px;
+  overflow-y: auto;
+}
+
+/* Content of the viewer, built by script.js from each piece.
+   Mobile: everything stacked, images fit the width of the screen. */
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.detail__illustration,
+.detail__spread {
+  width: 100%;
+  height: auto;
+}
+
+.detail__meta {
+  margin-top: 24px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.detail__title {
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.detail__text {
+  max-width: 560px;
+  margin-top: 12px;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.detail__text + .detail__text {
+  margin-top: 0.5em;
+}
+
+/* Portraits: image with the title and year below, centred */
+.detail[data-type="portrait"] {
+  align-items: center;
+  gap: 16px;
+}
+
+.detail[data-type="portrait"] .detail__side {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+
+.detail[data-type="portrait"] .detail__title,
+.detail[data-type="portrait"] .detail__meta {
+  margin-top: 0;
+}
+
+
+/* 7. About page
+   -------------------------------------------------------------------------- */
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding-top: 24px;
+  justify-content: center;
+  align-items: center;
+}
+
+.about__portrait {
+  flex: 0 1 440px;
+  min-width: 0;
+}
+
+.about__text {
+  flex: 999 1 320px;
+  min-width: 0;
+  max-width: 560px;
+}
+
+.about__name {
+  font-family: var(--font-serif);
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.about__role {
+  margin-top: 4px;
+  font-size: 15px;
+  color: var(--color-muted);
+}
+
+.about__bio {
+  margin-top: 32px;
+  font-family: var(--font-serif);
+  font-size: 20px;
+  line-height: 1.55;
+}
+
+.about__bio p + p {
+  margin-top: 16px;
+}
+
+.about__heading {
+  margin-top: 56px;
+}
+
+.publications {
+  margin-top: 12px;
+}
+
+.publications li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.publications__detail {
+  color: var(--color-muted);
+}
+
+.about__email {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 0;
+  font-family: var(--font-serif);
+  font-size: 24px;
   text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
 }
 
-/* Focus mode (a click on the image): no caption or description, and the image fills the
-   screen: it fits the height, or the width if the image is wider than the screen. */
-.glightbox-clean .gslide-image img {
-  cursor: zoom-in;         /* just a hint: there is no zoom, a click toggles focus mode */
+
+/* 8. Footer
+   -------------------------------------------------------------------------- */
+.site-footer {
+  margin-top: 64px;
+  padding-block: 24px 32px;
+  color: var(--color-muted);
+  font-size: 13px;
 }
 
-.lightbox-focus .glightbox-clean .gslide-image img {
-  cursor: zoom-out;
-  max-height: 100vh !important;    /* !important: GLightbox sets a max-height inline to leave room for the caption */
-  max-height: 100dvh !important;   /* phones: the visible height, without the browser bars */
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
 }
 
-.lightbox-focus .glightbox-container .gslide-description {
-  position: absolute;     /* out of the layout, but still measured by GLightbox */
-  visibility: hidden;
+.site-footer a {
+  display: inline-block;
+  padding: 12px 0;
+  color: var(--color-ink);
 }
 
-/* Arrows and close button stay, with a faint backing so they remain visible over dark images */
-.lightbox-focus .glightbox-clean .gprev,
-.lightbox-focus .glightbox-clean .gnext,
-.lightbox-focus .glightbox-clean .gclose {
-  background-color: rgba(255, 255, 255, 0.7);
+
+/* 9. Tablet and desktop
+   -------------------------------------------------------------------------- */
+@media (min-width: 701px) {
+  :root {
+    --page-pad: 48px;
+    --columns: 3;
+    --gap: 32px;
+    --seal-size: 48px;
+    --header-pad: 20px;
+    --viewer-bar: 64px;
+    --viewer-gap: 48px;       /* espacio entre la ilustración y el spread */
+    --viewer-side: 560px;     /* ancho de la columna del spread y el texto */
+    --viewer-bottom: 48px;    /* espacio bajo la ilustración */
+  }
+
+  .site-nav {
+    gap: 32px;
+  }
+
+  .intro {
+    padding-top: 16px;
+  }
+
+  .intro__name {
+    font-size: 24px;
+  }
+
+  .intro + .section {
+    margin-top: 40px;
+  }
+
+  .section + .section {
+    margin-top: 96px;
+  }
+
+  .site-footer {
+    margin-top: 96px;
+    padding-block: 32px 48px;
+  }
+
+  .about {
+    gap: 64px;
+    padding-top: 48px;
+  }
+
+  /* Ancho del bloque ilustración + spread. La ilustración es tan alta como permite la
+   pantalla, así que su ancho es ese alto por la proporción A5 (1270 / 1800). */
+  .viewer {
+    --detail-width: calc(
+      (100dvh - var(--viewer-bar) - var(--viewer-bottom)) * 0.7055
+      + var(--viewer-gap) + var(--viewer-side)
+    );
+  }
+
+  /* La barra usa el mismo ancho que el contenido, así los bordes coinciden */
+  .viewer__bar {
+    width: min(100% - 2 * var(--page-pad), var(--detail-width));
+    margin-inline: auto;
+    padding-inline: 0;
+  }
+
+  .viewer__body {
+    padding-bottom: var(--viewer-bottom);
+  }
+
+  /* Fiction: illustration on the left at full height; spread and text on the right */
+  .detail {
+    flex-direction: row;
+    gap: var(--viewer-gap);
+    height: 100%;
+    justify-content: center;
+  }
+
+  .detail__illustration {
+    flex: none;
+    width: auto;
+    max-width: 50%;
+    height: 100%;
+    object-fit: contain;
+    object-position: left top;
+  }
+
+  .detail__side {
+    flex: 0 1 var(--viewer-side);
+    min-width: 0;
+    max-height: 100%;
+    overflow-y: auto;
+  }
+
+  .detail__meta {
+    margin-top: 32px;
+  }
+
+  /* Portraits: image fills the available height */
+  .detail[data-type="portrait"] {
+    flex-direction: column;
+  }
+
+  .detail[data-type="portrait"] .detail__illustration {
+    flex: 1 1 0;
+    min-height: 0;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    object-position: center;
+  }
+
+  .detail[data-type="portrait"] .detail__side {
+    flex: none;
+    overflow: visible;
+  }
 }
 
-/* ---------- Respect "reduce motion" ---------- */
-@media (prefers-reduced-motion: reduce) {
-  .mosaic,
-  .item img {
-    transition: none;
+@media (min-width: 1100px) {
+  :root {
+    --columns: 4;
   }
 }

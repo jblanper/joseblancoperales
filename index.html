@@ -3,151 +3,324 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jose Blanco Perales</title>
-  <meta name="description" content="Portfolio of Jose Blanco Perales, illustrator">
-  <link rel="preload" href="fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="vendor/glightbox.min.css">
+  <title>José Blanco Perales — Illustrator</title>
+  <meta name="description" content="Portfolio of José Blanco Perales, illustrator. Editorial illustration for fiction, poetry and portraits.">
+  <meta name="theme-color" content="#ececea">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="José Blanco Perales — Illustrator">
+  <meta property="og:description" content="Editorial illustration for fiction, poetry and portraits.">
+  <meta property="og:image" content="https://joseblancoperales.com/img/preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="img/seal.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/newsreader-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="favicon.ico" sizes="32x32">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png"> 
+  <script src="js/script.js" defer></script>
 </head>
 <body>
 
   <header class="site-header">
-    <a class="logo" href="index.html">
-      <img src="images/portfolio_square_logo.svg" alt="Jose Blanco Perales" width="110" height="110">
-    </a>
-    <nav aria-label="Main">
-      <a href="index.html" aria-current="page">Illustrations</a>
-      <a href="about.html">About</a>
-    </nav>
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html" aria-label="José Blanco Perales, home">
+        <img src="img/seal.svg" alt="" width="48" height="48">
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="#fiction">Fiction</a>
+        <a href="#portraits">Portraits</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <!-- Filters. data-filter must match a value used in data-tags below ("all" shows everything). -->
-    <div class="filters" role="group" aria-label="Filter illustrations">
-      <button type="button" data-filter="all" aria-pressed="true">All</button>
-      <button type="button" data-filter="book-illustration" aria-pressed="false">Book illustration</button>
-      <button type="button" data-filter="portraits" aria-pressed="false">Portraits</button>
+  <main class="page">
+
+    <div class="intro">
+      <h1 class="intro__name">José Blanco Perales <span class="intro__role">Illustrator</span></h1>
     </div>
 
-    <div class="mosaic" id="mosaic">
+    <section class="section" id="fiction" aria-labelledby="fiction-title">
+      <h2 class="section__title" id="fiction-title">Fiction</h2>
 
-      <div class="item" data-tags="book-illustration">
-        <a href="images/full/soseki_libelula_18.webp" data-caption="El Sueño de la Libélula (Dreams of the dragonfly) by Natsume Sōseki, haiku 18">
-          <img src="images/thumbs/soseki_libelula_18.webp" alt="El Sueño de la Libélula (Dreams of the dragonfly) by Natsume Sōseki, haiku 18" width="600" height="900" loading="lazy">
-        </a>
-      </div>
+      <ul class="grid">
 
-      <div class="item" data-tags="book-illustration">
-        <a href="images/full/soseki_libelula_23.webp" data-caption="El Sueño de la Libélula (Dreams of the dragonfly) by Natsume Sōseki, haiku 23">
-          <img src="images/thumbs/soseki_libelula_23.webp" alt="El Sueño de la Libélula (Dreams of the dragonfly) by Natsume Sōseki, haiku 23" width="600" height="900" loading="lazy">
-        </a>
-      </div>
+        <!-- Soseki -->
+        <li class="piece" data-type="fiction">
+          <a class="piece__link" href="img/fiction/soseki_libelula_3.webp">
+            <img src="img/fiction/soseki_libelula_3.webp" alt="Haiku #1, Natsume Soseki's haikus" width="1270" height="1800" loading="lazy">
+          </a>
+          <template>
+            <!-- <img class="detail__spread" src="img/fiction/01-spread.webp" alt="Book spread with the illustration" width="1800" height="1277"> -->
+            <p class="detail__meta">Natsume Soseki's haikus</p>
+            <h3 class="detail__title">Haiku #1</h3>
+            <p class="detail__text">My thoughts<br>are just a single line<br>perhaps a swallow?</p>
+            <p class="detail__text"></p>
+          </template>
+        </li>
 
-      <div class="item" data-tags="book-illustration">
-        <a href="images/full/soseki_libelula_3.webp" data-caption="El Sueño de la Libélula (Dreams of the dragonfly) by Natsume Sōseki, haiku 3">
-          <img src="images/thumbs/soseki_libelula_3.webp" alt="El Sueño de la Libélula (Dreams of the dragonfly) by Natsume Sōseki, haiku 3" width="600" height="900" loading="lazy">
-        </a>
-      </div>
+        <li class="piece" data-type="fiction">
+          <a class="piece__link" href="img/fiction/soseki_libelula_18.webp">
+            <img src="img/fiction/soseki_libelula_18.webp" alt="Haiku #2, Natsume Soseki's haikus" width="1270" height="1800" loading="lazy">
+          </a>
+          <template>
+            <!-- <img class="detail__spread" src="img/fiction/01-spread.webp" alt="Book spread with the illustration" width="1800" height="1277"> -->
+            <p class="detail__meta">Natsume Soseki's haikus</p>
+            <h3 class="detail__title">Haiku #2</h3>
+            <p class="detail__text">I hear<br>that the yellow morning glories<br>have blossomed.</p>
+          </template>
+        </li>
 
-      <div class="item" data-tags="book-illustration">
-        <a href="images/full/soseki_libelula_44.webp" data-caption="El Sueño de la Libélula (Dreams of the dragonfly) by Natsume Sōseki, haiku 44">
-          <img src="images/thumbs/soseki_libelula_44.webp" alt="El Sueño de la Libélula (Dreams of the dragonfly) by Natsume Sōseki, haiku 44" width="600" height="900" loading="lazy">
-        </a>
-      </div>
+        <li class="piece" data-type="fiction">
+          <a class="piece__link" href="img/fiction/soseki_libelula_23.webp">
+            <img src="img/fiction/soseki_libelula_23.webp" alt="Haiku #3, Natsume Soseki's haikus" width="1270" height="1800" loading="lazy">
+          </a>
+          <template>
+            <!-- <img class="detail__spread" src="img/fiction/01-spread.webp" alt="Book spread with the illustration" width="1800" height="1277"> -->
+            <p class="detail__meta">Natsume Soseki's haikus</p>
+            <h3 class="detail__title">Haiku #3</h3>
+            <p class="detail__text">I died as a man<br>reborn as a crane<br>spring's cold returns.</p>
+          </template>
+        </li>
 
-      <div class="item" data-tags="book-illustration">
-        <a href="images/full/tagore_luna_portada.webp" data-caption="The Crescent Moon by Rabindranath Tagore, front page (1/2)">
-          <img src="images/thumbs/tagore_luna_portada.webp" alt="The Crescent Moon by Rabindranath Tagore, front page" width="600" height="900" loading="lazy">
-        </a>
-        <a class="spread" href="images/spreads/tagore_luna_book-portada.webp" data-caption="The Crescent Moon by Rabindranath Tagore, front page (2/2)"></a>
-      </div>
+        <li class="piece" data-type="fiction">
+          <a class="piece__link" href="img/fiction/soseki_libelula_44.webp">
+            <img src="img/fiction/soseki_libelula_44.webp" alt="Haiku #4, Natsume Soseki's haikus" width="1270" height="1800" loading="lazy">
+          </a>
+          <template>
+            <!-- <img class="detail__spread" src="img/fiction/01-spread.webp" alt="Book spread with the illustration" width="1800" height="1277"> -->
+            <p class="detail__meta">Natsume Soseki's haikus</p>
+            <h3 class="detail__title">Haiku #4</h3>
+            <p class="detail__text">That pine tree<br>that must withstand the north wind<br>refuses to grow.</p>
+          </template>
+        </li>
 
-      <div class="item" data-tags="portraits book-illustration">
-        <a href="images/full/tagore.webp" data-caption="Portrait of Rabindranath Tagore (1/2)">
-          <img src="images/thumbs/tagore.webp" alt="Portrait of Rabindranath Tagore"" width="600" height="800" loading="lazy">
-        </a>
-        <a class="spread" href="images/spreads/tagore_luna_book-tagore.webp" data-caption="The Crescent Moon by Rabindranath Tagore, Portrait of author (2/2)"></a>
-      </div>
+        <!-- Tagore -->
+         <li class="piece" data-type="fiction">
+          <a class="piece__link" href="img/fiction/tagore_luna_portada.webp">
+            <img src="img/fiction/tagore_luna_portada.webp" alt="Front piece, The Crescent Moon by Rabindranath Tagore" width="1270" height="1800" loading="lazy">
+          </a>
+          <template>
+            <img class="detail__spread" src="img/fiction/tagore_luna_book-portada.webp" alt="Book spread with the illustration" width="1800" height="1277">
+            <p class="detail__meta">The Crescent Moon by Rabindranath Tagore</p>
+            <h3 class="detail__title">Front piece</h3>
+          </template>
+        </li>
 
-      <div class="item" data-tags="book-illustration">
-        <a href="images/full/tagore_luna_23.webp" data-caption="The Crescent Moon by Rabindranath Tagore, Poem 23 (1/2)">
-          <img src="images/thumbs/tagore_luna_23.webp" alt="The Crescent Moon by Rabindranath Tagore, Poem 23" width="600" height="900" loading="lazy">
-        </a>
-        <a class="spread" href="images/spreads/tagore_luna_book-23.webp" data-caption="The Crescent Moon by Rabindranath Tagore, Poem 23 (2/2)"></a>
-      </div>
+        <li class="piece" data-type="fiction">
+          <a class="piece__link" href="img/fiction/tagore_luna_1.webp">
+            <img src="img/fiction/tagore_luna_1.webp" alt="I. The Home, The Crescent Moon by Rabindranath Tagore" width="1270" height="1800" loading="lazy">
+          </a>
+          <template>
+            <img class="detail__spread" src="img/fiction/tagore_luna_book-1.webp" alt="Book spread with the illustration" width="1800" height="1277">
+            <p class="detail__meta">The Crescent Moon by Rabindranath Tagore</p>
+            <h3 class="detail__title">I. The Home</h3>
+            <p class="detail__text">I paced alone on the road across the field while the sunset was hiding its last gold like a miser.</p>
+            <p class="detail__text">The daylight sank deeper and deeper into the darkness, and the widowed land, whose harvest had been reaped, lay silent.</p>
+            <p class="detail__text">Suddenly a boy's shrill voice rose into the sky. He traversed the dark unseen, leaving the track of his song across the hush of the evening.</p>
+            <p class="detail__text">His village home lay there at the end of the waste land, beyond the sugar-cane field, hidden among the shadows of the banana and the slender areca palm, the cocoa-nut and the dark green jack-fruit trees.</p>
+            <p class="detail__text">I stopped for a moment in my lonely way under the starlight, and saw spread before me the darkened earth surrounding with her arms countless homes furnished with cradles and beds, mothers' hearts and evening lamps, and young lives glad with a gladness that knows nothing of its value for the world.</p>
+          </template>
+        </li>
 
-      <div class="item" data-tags="book-illustration">
-        <a href="images/full/tagore_luna_12.webp" data-caption="The Crescent Moon by Rabindranath Tagore, Poem 12 (1/2)">
-          <img src="images/thumbs/tagore_luna_12.webp" alt="The Crescent Moon by Rabindranath Tagore, Poem 12" width="600" height="900" loading="lazy">
-        </a>
-        <a class="spread" href="images/spreads/tagore_luna_book-12.webp" data-caption="The Crescent Moon by Rabindranath Tagore, Poem 12 (2/2)"></a>
-      </div>
+        <li class="piece" data-type="fiction">
+          <a class="piece__link" href="img/fiction/tagore_luna_12.webp">
+            <img src="img/fiction/tagore_luna_12.webp" alt="XII. Playthings, The Crescent Moon by Rabindranath Tagore" width="1270" height="1800" loading="lazy">
+          </a>
+          <template>
+            <img class="detail__spread" src="img/fiction/tagore_luna_book-12.webp" alt="Book spread with the illustration" width="1800" height="1277">
+            <p class="detail__meta">The Crescent Moon by Rabindranath Tagore</p>
+            <h3 class="detail__title">XII. Playthings</h3>
+            <p class="detail__text">Child, how happy you are sitting in the dust, playing with a broken twig all the morning.</p>
+            <p class="detail__text">I smile at your play with that little bit of a broken twig.</p>
+            <p class="detail__text">I am busy with my accounts, adding up figures by the hour.</p>
+            <p class="detail__text">Perhaps you glance at me and think, "What a stupid game to spoil your morning with!"</p>
+            <p class="detail__text">Child, I have forgotten the art of being absorbed in sticks and mud-pies.</p>
+            <p class="detail__text">I seek out costly playthings, and gather lumps of gold and silver.</p>
+            <p class="detail__text">With whatever you find you create your glad games, I spend both my time and my strength over things I never can obtain.</p>
+            <p class="detail__text">In my frail canoe I struggle to cross the sea of desire, and forget that I too am playing a game.</p>
+          </template>
+        </li>
 
-      <div class="item" data-tags="portraits">
-        <a href="images/full/ursula_k_le_guin.webp" data-caption="Portrait of Ursula K. le Guin">
-          <img src="images/thumbs/ursula_k_le_guin.webp" alt="Portrait of Ursula K. le Guin" width="600" height="900" loading="lazy">
-        </a>
-      </div>
+        <li class="piece" data-type="fiction">
+          <a class="piece__link" href="img/fiction/tagore_luna_16.webp">
+            <img src="img/fiction/tagore_luna_16.webp" alt="XVI. Fairyland, The Crescent Moon by Rabindranath Tagore" width="1270" height="1800" loading="lazy">
+          </a>
+          <template>
+            <img class="detail__spread" src="img/fiction/tagore_luna_book-16.webp" alt="Book spread with the illustration" width="1800" height="1277">
+            <p class="detail__meta">The Crescent Moon by Rabindranath Tagore</p>
+            <h3 class="detail__title">XVI. Fairyland</h3>
+            <p class="detail__text">If people came to know where my king's palace is, it would vanish into the air.</p>
+            <p class="detail__text">The walls are of white silver and the roof of shining gold.</p>
+            <p class="detail__text">The queen lives in a palace with seven courtyards, and she wears a jewel that cost all the wealth of seven kingdoms.</p>
+            <p class="detail__text">But let me tell you, mother, in a whisper, where my king's palace is.</p>
+            <p class="detail__text">It is at the corner of our terrace where the pot of the tulsi plant stands.</p>
+            <p class="detail__text">The princess lies sleeping on the far-away shore of the seven impassable seas.</p>
+            <p class="detail__text">There is none in the world who can find her but myself.</p>
+            <p class="detail__text">She has bracelets on her arms and pearl drops in her ears; her hair sweeps down upon the floor.</p>
+            <p class="detail__text">She will wake when I touch her with my magic wand, and jewels will fall from her lips when she smiles.</p>
+            <p class="detail__text">But let me whisper in your ear, mother; she is there in the corner of our terrace where the pot of the tulsi plant stands.</p>
+            <p class="detail__text">When it is time for you to go to the river for your bath, step up to that terrace on the roof.</p>
+            <p class="detail__text">I sit in the corner where the shadows of the walls meet together.</p>
+            <p class="detail__text">Only puss is allowed to come with me, for she knows where the barber in the story lives.</p>
+            <p class="detail__text">But let me whisper, mother, in your ear where the barber in the story lives.</p>
+            <p class="detail__text">It is at the corner of the terrace where the pot of the tulsi plant stands.</p>
+          </template>
+        </li>
 
-      <div class="item" data-tags="book-illustration">
-        <a href="images/full/tagore_luna_16.webp" data-caption="The Crescent Moon by Rabindranath Tagore, Poem 16 (1/2)">
-          <img src="images/thumbs/tagore_luna_16.webp" alt="The Crescent Moon by Rabindranath Tagore, Poem 16" width="600" height="900" loading="lazy">
-        </a>
-        <a class="spread" href="images/spreads/tagore_luna_book-16.webp" data-caption="The Crescent Moon by Rabindranath Tagore, Poem 16 (2/2)"></a>
-      </div>
+        <li class="piece" data-type="fiction">
+          <a class="piece__link" href="img/fiction/tagore_luna_18.webp">
+            <img src="img/fiction/tagore_luna_18.webp" alt="XVIII. The Rainy Day, The Crescent Moon by Rabindranath Tagore" width="1270" height="1800" loading="lazy">
+          </a>
+          <template>
+            <img class="detail__spread" src="img/fiction/tagore_luna_book-18.webp" alt="Book spread with the illustration" width="1800" height="1277">
+            <p class="detail__meta">The Crescent Moon by Rabindranath Tagore</p>
+            <h3 class="detail__title">XVIII. The Rainy Day</h3>
+            <p class="detail__text">Sullen clouds are gathering fast over the black fringe of the forest.</p>
+            <p class="detail__text">O child, do not go out!</p>
+            <p class="detail__text">The palm trees in a row by the lake are smiting their heads against the dismal sky; the crows with their draggled wings are silent on the tamarind branches, and the eastern bank of the river is haunted by a deepening gloom.</p>
+            <p class="detail__text">Our cow is lowing loud, tied at the fence.</p>
+            <p class="detail__text">O child, wait here till I bring her into the stall.</p>
+            <p class="detail__text">Men have crowded into the flooded field to catch the fishes as they escape from the overflowing ponds; the rain water is running in rills through the narrow lanes like a laughing boy who has run away from his mother to tease her.</p>
+            <p class="detail__text">Listen, someone is shouting for the boatman at the ford.</p>
+            <p class="detail__text">O child, the daylight is dim, and the crossing at the ferry is closed.</p>
+            <p class="detail__text">The sky seems to ride fast upon the madly-rushing rain; the water in the river is loud and impatient; women have hastened home early from the Ganges with their filled pitchers.</p>
+            <p class="detail__text">The evening lamps must be made ready.</p>
+            <p class="detail__text">O child, do not go out!</p>
+            <p class="detail__text">The road to the market is desolate, the lane to the river is slippery. The wind is roaring and struggling among the bamboo branches like a wild beast tangled in a net.</p>
+          </template>
+        </li>
 
-      <div class="item" data-tags="portraits">
-        <a href="images/full/aldous_huxley.webp" data-caption="Portrait of Aldous Huxley">
-          <img src="images/thumbs/aldous_huxley.webp" alt="Portrait of Aldous Huxley" width="600" height="900" loading="lazy">
-        </a>
-      </div>
+        <li class="piece" data-type="fiction">
+          <a class="piece__link" href="img/fiction/tagore_luna_19.webp">
+            <img src="img/fiction/tagore_luna_19.webp" alt="XIX. Paper Boats, The Crescent Moon by Rabindranath Tagore" width="1270" height="1800" loading="lazy">
+          </a>
+          <template>
+            <img class="detail__spread" src="img/fiction/tagore_luna_book-19.webp" alt="Book spread with the illustration" width="1800" height="1277">
+            <p class="detail__meta">The Crescent Moon by Rabindranath Tagore</p>
+            <h3 class="detail__title">XIX. Paper Boats</h3>
+            <p class="detail__text">Day by day I float my paper boats one by one down the running stream.</p>
+            <p class="detail__text">In big black letters I write my name on them and the name of the village where I live.</p>
+            <p class="detail__text">I hope that someone in some strange land will find them and know who I am.</p>
+            <p class="detail__text">I load my little boats with shiuli flowers from our garden, and hope that these blooms of the dawn will be carried safely to land in the night.</p>
+            <p class="detail__text">I launch my paper boats and look up into the sky and see the little clouds setting their white bulging sails.</p>
+            <p class="detail__text">I know not what playmate of mine in the sky sends them down the air to race with my boats!</p>
+            <p class="detail__text">When night comes I bury my face in my arms and dream that my paper boats float on and on under the midnight stars.</p>
+            <p class="detail__text">The fairies of sleep are sailing in them, and the lading is their baskets full of dreams.</p>
+          </template>
+        </li>
 
-      <div class="item" data-tags="book-illustration">
-        <a href="images/full/tagore_luna_18.webp" data-caption="The Crescent Moon by Rabindranath Tagore, Poem 18 (1/2)">
-          <img src="images/thumbs/tagore_luna_18.webp" alt="The Crescent Moon by Rabindranath Tagore, Poem 18" width="600" height="900" loading="lazy">
-        </a>
-        <a class="spread" href="images/spreads/tagore_luna_book-18.webp" data-caption="The Crescent Moon by Rabindranath Tagore, Poem 18 (2/2)"></a>
-      </div>
+        <li class="piece" data-type="fiction">
+          <a class="piece__link" href="img/fiction/tagore_luna_23.webp">
+            <img src="img/fiction/tagore_luna_23.webp" alt="XXIII. The Merchant, The Crescent Moon by Rabindranath Tagore" width="1270" height="1800" loading="lazy">
+          </a>
+          <template>
+            <img class="detail__spread" src="img/fiction/tagore_luna_book-23.webp" alt="Book spread with the illustration" width="1800" height="1277">
+            <p class="detail__meta">The Crescent Moon by Rabindranath Tagore</p>
+            <h3 class="detail__title">XXIII. The Merchant</h3>
+            <p class="detail__text">Imagine, mother, that you are to stay at home and I am to travel into strange lands.</p>
+            <p class="detail__text">Imagine that my boat is ready at the landing fully laden.</p>
+            <p class="detail__text">Now think well, mother, before you say what I shall bring for you when I come back.</p>
+            <p class="detail__text">Mother, do you want heaps and heaps of gold?</p>
+            <p class="detail__text">There, by the banks of golden streams, fields are full of golden harvest.</p>
+            <p class="detail__text">And in the shade of the forest path the golden champa flowers drop on the ground.</p>
+            <p class="detail__text">I will gather them all for you in many hundred baskets.</p>
+            <p class="detail__text">Mother, do you want pearls big as the raindrops of autumn?</p>
+            <p class="detail__text">I shall cross to the pearl island shore. There in the early morning light pearls tremble on the meadow flowers, pearls drop on the grass, and pearls are scattered on the sand in spray by the wild sea-waves.</p>
+            <p class="detail__text">My brother shall have a pair of horses with wings to fly among the clouds.</p>
+            <p class="detail__text">For father I shall bring a magic pen that, without his knowing, will write of itself.</p>
+            <p class="detail__text">For you, mother, I must have the casket and jewel that cost seven kings their kingdoms.</p>
+          </template>
+        </li>
 
-      <div class="item" data-tags="book-illustration">
-        <a href="images/full/tagore_luna_19.webp" data-caption="The Crescent Moon by Rabindranath Tagore, Poem 19 (1/2)">
-          <img src="images/thumbs/tagore_luna_19.webp" alt="The Crescent Moon by Rabindranath Tagore, Poem 19" width="600" height="900" loading="lazy">
-        </a>
-        <a class="spread" href="images/spreads/tagore_luna_book-19.webp" data-caption="The Crescent Moon by Rabindranath Tagore, Poem 19 (2/2)"></a>
-      </div>
+      </ul>
+    </section>
 
-      <div class="item" data-tags="book-illustration">
-        <a href="images/full/tagore_luna_1.webp" data-caption="The Crescent Moon by Rabindranath Tagore, Poem 1 (1/2)">
-          <img src="images/thumbs/tagore_luna_1.webp" alt="The Crescent Moon by Rabindranath Tagore, Poem 1" width="600" height="900" loading="lazy">
-        </a>
-        <!-- <div class="description">
-          <p>THE HOME</p>
-          <p>I PACED alone on the road across the field while the sunset was hiding its last gold like a miser.
-          <p>The daylight sank deeper and deeper into the darkness, and the widowed land, whose harvest had been reaped, lay silent.</p>
-          <p>Suddenly a boy's shrill voice rose into the sky. He traversed the dark unseen, leaving the track of his song across the hush of the evening.</p>
-          <p>His village home lay there at the end of the waste land, beyond the sugar-cane field, hidden among the shadows of the banana and the slender areca palm, the cocoa-nut and the dark green jack-fruit trees.</p>
-          <p>I stopped for a moment in my lonely way under the starlight, and saw spread before me the darkened earth surrounding with her arms countless homes furnished with cradles and beds, mothers' hearts and evening lamps, and young lives glad with a gladness that knows nothing of its value for the world.</p>
-        </div> -->
-        <a class="spread" href="images/spreads/tagore_luna_book-1.webp" data-caption="The Crescent Moon by Rabindranath Tagore, Poem 1 (2/2)"></a>
-      </div>
+    <section class="section" id="portraits" aria-labelledby="portraits-title">
+      <h2 class="section__title" id="portraits-title">Portraits</h2>
 
-      <div class="item" data-tags="portraits">
-        <a href="images/full/self_portrait.webp" data-caption="Self-portrait">
-          <img src="images/thumbs/self_portrait.webp" alt="Self-portrait" width="600" height="900" loading="lazy">
-        </a>
-      </div>
-    
-    </div>
+      <ul class="grid">
+
+        <li class="piece" data-type="portrait">
+          <a class="piece__link" href="img/portraits/soseki.webp">
+            <img src="img/portraits/soseki.webp" alt="Natsume Soseki" width="1270" height="1800" loading="lazy">
+          </a>
+          <template>
+            <h3 class="detail__title">Natsume Soseki</h3>
+            <p class="detail__meta">2026</p>
+          </template>
+        </li>
+
+        <li class="piece" data-type="portrait">
+          <a class="piece__link" href="img/portraits/tagore.webp">
+            <img src="img/portraits/tagore.webp" alt="Rabindranath Tagore" width="1270" height="1800" loading="lazy">
+          </a>
+          <template>
+            <h3 class="detail__title">Rabindranath Tagore</h3>
+            <p class="detail__meta">2026</p>
+          </template>
+        </li>
+
+        <li class="piece" data-type="portrait">
+          <a class="piece__link" href="img/portraits/ursula_k_le_guin.webp">
+            <img src="img/portraits/ursula_k_le_guin.webp" alt="Ursula K. Le Guin" width="1270" height="1800" loading="lazy">
+          </a>
+          <template>
+            <h3 class="detail__title">Ursula K. Le Guin</h3>
+            <p class="detail__meta">2026</p>
+          </template>
+        </li>
+
+        <li class="piece" data-type="portrait">
+          <a class="piece__link" href="img/portraits/aldous_huxley.webp">
+            <img src="img/portraits/aldous_huxley.webp" alt="Aldous Huxley" width="1270" height="1800" loading="lazy">
+          </a>
+          <template>
+            <h3 class="detail__title">Aldous Huxley</h3>
+            <p class="detail__meta">2026</p>
+          </template>
+        </li>
+
+        <li class="piece" data-type="portrait">
+          <a class="piece__link" href="img/portraits/self_portrait.webp">
+            <img src="img/portraits/self_portrait.webp" alt="Self portrait" width="1270" height="1800" loading="lazy">
+          </a>
+          <template>
+            <h3 class="detail__title">Self portrait</h3>
+            <p class="detail__meta">2025</p>
+          </template>
+        </li>
+
+      </ul>
+    </section>
+
   </main>
 
   <footer class="site-footer">
-    <span>&copy; 2026 Jose Blanco Perales</span>
-    <!-- <a href="https://www.instagram.com/your-username/" target="_blank" rel="noopener">Instagram</a> -->
+    <div class="page site-footer__inner">
+      <span>© 2026 José Blanco Perales</span>
+      <a href="mailto:jblanper@gmail.com">jblanper@gmail.com</a>
+    </div>
   </footer>
 
-  <script src="vendor/glightbox.min.js"></script>
-  <script src="js/main.js"></script>
+  <!-- Viewer: filled in by script.js. Do not edit. -->
+  <dialog class="viewer" id="viewer" aria-label="Illustration viewer">
+    <div class="viewer__bar">
+      <p class="viewer__count" aria-live="polite"><span class="viewer__number"></span> <span class="viewer__label"></span></p>
+      <div class="viewer__controls">
+        <button class="viewer__button" type="button" data-viewer="prev" aria-label="Previous illustration">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 4.5 7 10l5.5 5.5"/></svg>
+        </button>
+        <button class="viewer__button" type="button" data-viewer="next" aria-label="Next illustration">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.5 4.5 13 10l-5.5 5.5"/></svg>
+        </button>
+        <button class="viewer__button" type="button" data-viewer="close" aria-label="Close viewer">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5 5 15"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="viewer__body"></div>
+  </dialog>
+
 </body>
 </html>
