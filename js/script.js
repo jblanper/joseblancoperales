@@ -1,9 +1,3 @@
-/* ==========================================================================
-   John Doe — Portfolio
-   One small feature, no libraries:
-   1. Viewer (full-screen dialog) with previous / next / close
-   ========================================================================== */
-
 (() => {
   'use strict';
 
