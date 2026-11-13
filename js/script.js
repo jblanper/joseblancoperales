@@ -80,6 +80,32 @@
       if (event.key === 'ArrowLeft') go(-1);
       if (event.key === 'ArrowRight') go(1);
     });
+
+    // Swipe left / right on touch screens
+    const SWIPE_MIN = 50;   // minimum horizontal distance, in px
+    let swipeStart = null;
+
+    viewer.addEventListener('touchstart', (event) => {
+      // Ignore gestures with more than one finger (pinch)
+      const touch = event.touches[0];
+      swipeStart = event.touches.length === 1 ? { x: touch.clientX, y: touch.clientY } : null;
+    }, { passive: true });
+
+    viewer.addEventListener('touchend', (event) => {
+      if (!swipeStart) return;
+      const touch = event.changedTouches[0];
+      const dx = touch.clientX - swipeStart.x;
+      const dy = touch.clientY - swipeStart.y;
+      swipeStart = null;
+
+      // Only count mostly horizontal gestures, so scrolling down still works
+      if (Math.abs(dx) < SWIPE_MIN || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+      go(dx < 0 ? 1 : -1);
+    }, { passive: true });
+
+    viewer.addEventListener('touchcancel', () => {
+      swipeStart = null;
+    }, { passive: true });
   }
 
 
